@@ -22,7 +22,7 @@ class RedactingFormatter(logging.Formatter):
         super(RedactingFormatter, self).__init__(self.FORMAT)
 
     def format(self, record: logging.LogRecord) -> str:
-        """ Filter values in incoming log records """
+        """ Filter value in incoming log records """
         return filter_datum(self.fields, self.REDACTION,
                             super().format(record), self.SEPARATOR)
 
@@ -31,7 +31,7 @@ def filter_datum(fields: List[str],
                  redaction: str,
                  message: str,
                  separator: str) -> str:
-    """ Returns the log message obfuscated """
+    """ Return the log message obfuscated """
     for item in fields:
         message = re.sub(fr'{item}=.+?{separator}',
                          f'{item}={redaction}{separator}', message)
