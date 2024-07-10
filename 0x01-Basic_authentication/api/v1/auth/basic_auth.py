@@ -37,7 +37,7 @@ class BasicAuth(Auth):
             return None
 
     def extract_user_credentials(self, decoded_base64_d: str) -> (str, str):
-        """ exctract user credentials """
+        """ Exctract user credentials """
         if not decoded_base64_d:
             return (None, None)
         elif type(decoded_base64_d) is not str:
