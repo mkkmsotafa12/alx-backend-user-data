@@ -60,7 +60,7 @@ class BasicAuth(Auth):
         return None
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """ current user definition """
+        """ Current user definition """
         if not request:
             return None
         auth = request.headers['Authorization']
