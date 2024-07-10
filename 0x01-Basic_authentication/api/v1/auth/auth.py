@@ -1,32 +1,38 @@
 #!/usr/bin/env python3
-""" Class authentication to be used in this file """
-from flask import request
+"""Authentication module for the API.
+"""
+import re
 from typing import List, TypeVar
+from flask import request
 
 
 class Auth:
-    """ Authentication class """
+    """Authentication class.
+    """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
-        """ Require auth
-            Args:
-                Path: path to file
-                Excluded_paths: path not inlcuded """
-        if not path or not excluded_paths:
-            return True
-        modified_list = list(map(lambda i: i.strip('/'), excluded_paths))
-        modified_path = path.strip('/')
-        if modified_path in modified_list:
-            return False
+        """Checks if a path requires authentication.
+        """
+        if path is not None and excluded_paths is not None:
+            for exclusion_path in map(lambda x: x.strip(), excluded_paths):
+                pattern = ''
+                if exclusion_path[-1] == '*':
+                    pattern = '{}.*'.format(exclusion_path[0:-1])
+                elif exclusion_path[-1] == '/':
+                    pattern = '{}/*'.format(exclusion_path[0:-1])
+                else:
+                    pattern = '{}/*'.format(exclusion_path)
+                if re.match(pattern, path):
+                    return False
         return True
 
     def authorization_header(self, request=None) -> str:
-        """ Authentication header function """
-        if not request:
-            return None
-        if 'Authorization' not in request.headers:
-            return None
-        return request.headers
+        """Gets the authorization header field from the request.
+        """
+        if request is not None:
+            return request.headers.get('Authorization', None)
+        return None
 
     def current_user(self, request=None) -> TypeVar('User'):
-        """ The current_user function """
+        """Gets the current user from the request.
+        """
         return None
