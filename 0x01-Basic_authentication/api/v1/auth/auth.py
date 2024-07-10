@@ -9,8 +9,8 @@ class Auth:
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ Require auth
             Args:
-                path: path to file
-                excluded_paths: path not inlcuded
+                Path: path to file
+                Excluded_paths: path not inlcuded
         """
         if not path or not excluded_paths:
             return True
