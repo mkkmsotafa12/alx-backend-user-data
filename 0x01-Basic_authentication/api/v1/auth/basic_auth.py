@@ -12,7 +12,7 @@ class BasicAuth(Auth):
     """ BasicAuth class here"""
     def extract_base64_authorization_header(self, authorization_header: str) \
             -> str:
-        """ base64 extract pass """
+        """ Base64 extract pass """
         if not authorization_header:
             return None
         elif type(authorization_header) is not str:
@@ -25,7 +25,7 @@ class BasicAuth(Auth):
 
     def decode_base64_authorization_header(self,
                                            base64_d: str) -> str:
-        """ decode base """
+        """ Decode base at base64_d """
         if not base64_d:
             return None
         elif type(base64_d) is not str:
