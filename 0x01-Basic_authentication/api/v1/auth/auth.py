@@ -10,8 +10,7 @@ class Auth:
         """ Require auth
             Args:
                 Path: path to file
-                Excluded_paths: path not inlcuded
-        """
+                Excluded_paths: path not inlcuded """
         if not path or not excluded_paths:
             return True
         modified_list = list(map(lambda i: i.strip('/'), excluded_paths))

@@ -25,8 +25,7 @@ if getenv('AUTH_TYPE') == 'basic_auth':
 
 @app.errorhandler(404)
 def not_found(error) -> str:
-    """ Not found handler
-    """
+    """ Not found handler """
     return jsonify({"error": "Not found"}), 404
 
 
@@ -38,13 +37,13 @@ def aunauth(error):
 
 @app.errorhandler(403)
 def forbid(error):
-    """ not allowed access """
+    """ Not allowed access """
     return jsonify({"error": "Forbidden"}), 403
 
 
 @app.before_request
 def check_auth():
-    """ function to edit auth variable """
+    """ Function to edit auth variable """
     if not auth:
         return
     list_paths = ['/api/v1/status/', '/api/v1/unauthorized/',
