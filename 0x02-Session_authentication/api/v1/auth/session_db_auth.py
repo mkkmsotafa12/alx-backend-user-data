@@ -10,17 +10,17 @@ from models.user_session import UserSession
 
 
 class SessionDBAuth(SessionExpAuth):
-    """A class used to handle session authentication with a database."""
+    """ A class used to handle session authentication with a database """
 
     def create_session(self, user_id=None):
-        """Creates a new session for a user and saves it in the database."""
+        """ reates a new session for a user and saves it in the database """
         session_id = super().create_session(user_id)
         if session_id:
             UserSession(user_id=user_id, session_id=session_id).save()
         return session_id
 
     def user_id_for_session_id(self, session_id=None):
-        """Retrieves the user ID associated with a session ID."""
+        """ Retrieves the user ID associated with a session ID """
         if session_id:
             UserSession.load_from_file()
             user_sessions = UserSession.search({"session_id": session_id})
@@ -36,7 +36,7 @@ class SessionDBAuth(SessionExpAuth):
         return None
 
     def destroy_session(self, request=None):
-        """Destroys a session based on the session ID from a request cookie."""
+        """ Destroys a session based on the session ID from a request cookie """
         if request:
             session_id = self.session_cookie(request)
             if not session_id:
