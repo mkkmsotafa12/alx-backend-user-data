@@ -13,7 +13,7 @@ class SessionDBAuth(SessionExpAuth):
     """ A class used to handle session authentication with a database """
 
     def create_session(self, user_id=None):
-        """ reates a new session for a user and saves it in the database """
+        """ Reates a new session for a user and saves it in the database """
         session_id = super().create_session(user_id)
         if session_id:
             UserSession(user_id=user_id, session_id=session_id).save()
