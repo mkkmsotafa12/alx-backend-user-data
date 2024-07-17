@@ -21,10 +21,7 @@ class DB:
     """
 
     def __init__(self) -> None:
-        """
-        Initializes a new DB instance. This involves setting up the engine,
-        dropping all existing tables, and creating new tables.
-        """
+        """ Initialize a new DB instance """
         self._engine = create_engine("sqlite:///a.db")
         Base.metadata.drop_all(self._engine)
         Base.metadata.create_all(self._engine)
