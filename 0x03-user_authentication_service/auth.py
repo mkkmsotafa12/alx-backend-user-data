@@ -82,7 +82,9 @@ class Auth:
             raise ValueError
 
     def update_password(self, reset_token: str, password: str) -> None:
-        """ update password"""
+        """ Update password of the user with the given reset token.
+        If the reset token is not valid or the password is not provided,
+        a ValueError is raised """
         try:
             user = self._db.find_user_by(reset_token=reset_token)
             hashed_password = _hash_password(password)
