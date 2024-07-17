@@ -39,10 +39,8 @@ def users() -> Tuple[Response, int]:
 
 @app.route("/sessions", methods=["POST"])
 def login() -> Response:
-    """
-    The sessions route which handles user login.
-    It expects 'email' and 'password' in the form data.
-    """
+    """ The sessions route which handles user login.
+    It expects 'email' and 'password' in the form data """
     email = request.form["email"]
     password = request.form["password"]
 
@@ -61,10 +59,8 @@ def login() -> Response:
 
 @app.route("/sessions", methods=["DELETE"])
 def logout() -> Tuple[Response, int]:
-    """
-    The sessions route which handles user logout.
-    It expects a 'session_id' cookie.
-    """
+    """ The sessions route which handles user logout.
+    It expects a 'session_id' cookie """
     session_id = request.cookies.get("session_id", None)
 
     if not session_id:
@@ -81,10 +77,8 @@ def logout() -> Tuple[Response, int]:
 
 @app.route("/profile", methods=["GET"])
 def profile() -> Tuple[Response, int]:
-    """
-    The profile route which returns the user's profile.
-    It expects a 'session_id' cookie.
-    """
+    """ The profile route which returns the user's profile.
+    It expects a 'session_id' cookie """
     session_id = request.cookies.get("session_id", None)
 
     if not session_id:
@@ -100,10 +94,8 @@ def profile() -> Tuple[Response, int]:
 
 @app.route("/reset_password", methods=["POST"])
 def reset_password() -> Tuple[Response, int]:
-    """
-    The reset_password route which handles password reset requests.
-    It expects 'email' in the form data.
-    """
+    """ The reset_password route which handles password reset requests.
+    It expects 'email' in the form data """
     email = request.form["email"]
     if not email:
         abort(403)
@@ -118,10 +110,8 @@ def reset_password() -> Tuple[Response, int]:
 
 @app.route("/reset_password", methods=["PUT"])
 def update_password() -> Tuple[Response, int]:
-    """
-    The update_password route which handles password updates.
-    It expects 'email', 'reset_token', and 'new_password' in the form data.
-    """
+    """ The update_password route which handles password updates.
+    It expects 'email', 'reset_token', and 'new_password' in the form data"""
     email = request.form["email"]
     reset_token = request.form["reset_token"]
     new_pwd = request.form["new_password"]
