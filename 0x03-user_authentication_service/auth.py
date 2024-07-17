@@ -72,7 +72,8 @@ class Auth:
         return None
 
     def get_reset_password_token(self, email: str) -> str:
-        """ get reset password token"""
+        """ Generates a reset password token
+            for the user with the given email """
         try:
             user = self._db.find_user_by(email=email)
             reset_token = _generte_uuid()
