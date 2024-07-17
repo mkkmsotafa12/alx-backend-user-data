@@ -49,16 +49,14 @@ def log_in(email: str, password: str) -> str:
 
 
 def profile_unlogged() -> None:
-    """Tests retrieving profile information whilst logged out.
-    """
+    """ Tests retrieving profile information whilst logged out """
     url = "{}/profile".format(BASE_URL)
     res = requests.get(url)
     assert res.status_code == 403
 
 
 def profile_logged(session_id: str) -> None:
-    """Tests retrieving profile information whilst logged in.
-    """
+    """ Tests retrieving profile information whilst logged in """
     url = "{}/profile".format(BASE_URL)
     req_cookies = {
         'session_id': session_id,
@@ -69,8 +67,7 @@ def profile_logged(session_id: str) -> None:
 
 
 def log_out(session_id: str) -> None:
-    """Tests logging out of a session.
-    """
+    """ Tests logging out of a session """
     url = "{}/sessions".format(BASE_URL)
     req_cookies = {
         'session_id': session_id,
