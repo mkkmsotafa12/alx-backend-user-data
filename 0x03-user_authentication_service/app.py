@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Module contains flask application"""
+""" Module contains flask application """
 
 from auth import Auth
 from flask import (Flask, Response, abort, jsonify,
@@ -15,18 +15,14 @@ app.url_map.strict_slashes = False
 
 @app.route("/", methods=["GET"])
 def index() -> Response:
-    """
-    The index route which returns a welcome message.
-    """
+    """ The index route which returns a welcome message """
     return jsonify({"message": "Bienvenue"})
 
 
 @app.route("/users", methods=["POST"])
 def users() -> Tuple[Response, int]:
-    """
-    The users route which handles user registration.
-    It expects 'email' and 'password' in the form data.
-    """
+    """ The users route which handles user registration.
+    It expects 'email' and 'password' in the form data """
     email = request.form["email"]
     password = request.form["password"]
 
