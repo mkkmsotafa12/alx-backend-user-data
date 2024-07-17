@@ -111,7 +111,7 @@ def reset_password() -> Tuple[Response, int]:
 @app.route("/reset_password", methods=["PUT"])
 def update_password() -> Tuple[Response, int]:
     """ The update_password route which handles password updates.
-    It expects 'email', 'reset_token', and 'new_password' in the form data"""
+    It expects 'email', 'reset_token', and 'new_password' in the form data """
     email = request.form["email"]
     reset_token = request.form["reset_token"]
     new_pwd = request.form["new_password"]
