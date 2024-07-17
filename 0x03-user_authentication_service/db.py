@@ -80,8 +80,7 @@ class DB:
         """
         Updates a User record with the given user_id and attributes. If the
         User is not found or the attributes are invalid, an exception is
-        raised.
-        """
+        raised """
         user = self.find_user_by(id=user_id)
         self._validate_attributes(kwargs)
 
